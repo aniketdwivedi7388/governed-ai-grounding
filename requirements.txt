@@ -1,0 +1,34 @@
+# ---------------------------------------------------------------------------
+# governed-ai-grounding
+# ---------------------------------------------------------------------------
+# Nothing in this repository is required to run the core material.
+#
+#   python3 examples/glossary_grounding_demo.py
+#   python3 evaluation/eval_framework.py --eval-set evaluation/sample_eval_set.jsonl
+#
+# Both run on the Python standard library alone (3.10+, for PEP 604 unions).
+# No model endpoint, API key, Salesforce org or network access is needed.
+#
+# The dependencies below are strictly optional conveniences.
+# ---------------------------------------------------------------------------
+
+# Optional. Only for downstream analysis of the CSV/JSON eval reports --
+# trend lines across runs, joins against your own case metadata. The harness
+# writes both formats using the standard library and never imports pandas.
+pandas>=2.0 ; python_version >= "3.10"
+
+# ---------------------------------------------------------------------------
+# Deliberately absent
+# ---------------------------------------------------------------------------
+# No embedding models, vector stores, ML frameworks or LLM SDKs.
+#
+# The evaluators here are lexical and deterministic by design: they are meant
+# to run on every pull request in seconds, produce identical scores on every
+# machine, and be explainable to an auditor. That is a different job from
+# semantic evaluation.
+#
+# If you add LLM-as-judge or embedding-based scoring -- and for a production
+# programme you should, alongside these rather than instead of them -- keep it
+# in a separate optional extra so the CI gate stays fast, offline and free of
+# the non-determinism that makes a regression gate untrustworthy.
+# ---------------------------------------------------------------------------
